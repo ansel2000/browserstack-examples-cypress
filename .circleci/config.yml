@@ -30,7 +30,6 @@ workflows:
     jobs:
       - build:
           pre-steps:
-    # Download the browserstack binary file
             - run:
                 name: "Download Binary"
                 command : |
