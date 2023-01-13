@@ -2,14 +2,13 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
-machine:
-  environment:
-    BROWSERSTACK_LOCAL: true
-    BROWSERSTACK_LOCAL_IDENTIFIER: "identifier"
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
+    environment:
+      BROWSERSTACK_LOCAL: "true"
+      BROWSERSTACK_LOCAL_IDENTIFIER: "identifier"
     docker:
       - image: cimg/node:14.11.0
     # Add steps to the job
