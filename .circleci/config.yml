@@ -40,6 +40,7 @@ workflows:
                   unzip BrowserStackLocal-linux-x64.zip
                   # Run the file with user's access key
                   ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY
+                background: true
             #   command: wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
             # # Unzip the BrowserStack Local binary file
             # - run:
