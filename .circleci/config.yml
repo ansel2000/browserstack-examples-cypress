@@ -23,8 +23,6 @@ jobs:
           name: "Run the test on BrowserStack"
           command: browserstack-cypress --config-file run_conf/bstack-local-single.json run --sync --spec --parallels 5
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   build:
     jobs:
