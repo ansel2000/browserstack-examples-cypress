@@ -2,12 +2,14 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 machine:
-  environment:
-    BROWSERSTACK_LOCAL: true
+    image: ubuntu-2004:202107-02
+    environment:
+          BROWSERSTACK_LOCAL: false
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build:
+    
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -22,7 +24,7 @@ jobs:
           command: sudo npm install -g browserstack-cypress-cli
       - run:
           name: "Run the test on BrowserStack"
-          command: browserstack-cypress --config-file run_conf/bstack-single.json run --sync --spec --parallels 6
+          command: browserstack-cypress --config-file run_conf/bstack-local.json run --sync --spec --parallels 6
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -30,3 +32,11 @@ workflows:
   build:
     jobs:
       - build
+    #       pre-steps:
+    # # Download the browserstack binary file
+    #         - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+    #         # Unzip the BrowserStack Local binary file
+    #         - unzip BrowserStackLocal-linux-x64.zip
+    #         # Run the file with your access key
+    #         - ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY:
+    #             background: true
