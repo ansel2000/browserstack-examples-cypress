@@ -52,8 +52,5 @@
     },
     "package_config_options": {}
   },
-  "connection_settings": {
-    "local": false
-  },
   "disable_usage_reporting": false
 }
