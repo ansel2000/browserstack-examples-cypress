@@ -31,9 +31,6 @@
     },
     "package_config_options": {}
   },
-  "connection_settings": {
-    "local": true
-  },
   "disable_usage_reporting": false
 }
   
