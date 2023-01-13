@@ -4,7 +4,6 @@ version: 2.1
 machine:
   environment:
     BROWSERSTACK_LOCAL: true
-    BROWSERSTACK_LOCAL_IDENTIFIER: Testing1234
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
