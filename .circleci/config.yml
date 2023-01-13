@@ -9,8 +9,10 @@ jobs:
     environment:
       BROWSERSTACK_LOCAL: "true"
       BROWSERSTACK_LOCAL_IDENTIFIER: "identifier"
-    docker:
-      - image: cimg/node:14.11.0
+    # docker:
+    #   - image: cimg/node:14.11.0
+    machine:
+      image: ubuntu-2004:current
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     working_directory: ~/app
@@ -26,12 +28,26 @@ jobs:
 workflows:
   build:
     jobs:
-      - build
-    #       pre-steps:
-    # # Download the browserstack binary file
-    #         - wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
-    #         # Unzip the BrowserStack Local binary file
-    #         - unzip BrowserStackLocal-linux-x64.zip
-    #         # Run the file with your access key
-    #         - ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY:
-    #             background: true
+      - build:
+          pre-steps:
+    # Download the browserstack binary file
+            - run:
+                name: "Download Binary"
+                command : |
+                  # Download the browserstack binary file
+                  wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+                  # Unzip it
+                  unzip BrowserStackLocal-linux-x64.zip
+                  # Run the file with user's access key
+                  ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY
+            #   command: wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+            # # Unzip the BrowserStack Local binary file
+            # - run:
+            #   name: "Unzip Local"
+            #   command: unzip BrowserStackLocal-linux-x64.zip
+            # - run:
+            #   name: "Local"
+            #   command: ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY
+            # Run the file with your access key
+            # - ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY:
+            #     background: true
