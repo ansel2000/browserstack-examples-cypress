@@ -19,15 +19,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Download Binary"
-          command : python3 -m http.server 3000 --bind localhost
-          background: true
-      - run:
           name: "Install Dependencies"
           command: sudo npm install -g browserstack-cypress-cli
       - run:
           name: "Run the test on BrowserStack"
           command: browserstack-cypress --config-file run_conf/bstack-local-single.json run --sync --spec --parallels 5
+      - run:
+          name: "Download Binary"
+          command : python3 -m http.server 3000 --bind localhost
 
 workflows:
   build:
