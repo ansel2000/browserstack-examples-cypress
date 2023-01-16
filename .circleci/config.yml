@@ -33,12 +33,7 @@ workflows:
             - run:
                 name: "Download Binary"
                 command : |
-                  # Download the browserstack binary file
-                  wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
-                  # Unzip it
-                  unzip BrowserStackLocal-linux-x64.zip
-                  # Run the file with user's access key
-                  ./BrowserStackLocal $BROWSERSTACK_ACCESS_KEY
+                  python3 -m http.server 3000
                 background: true
             #   command: wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
             # # Unzip the BrowserStack Local binary file
