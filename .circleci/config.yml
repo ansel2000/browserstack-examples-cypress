@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: "Download Binary"
-          command : python3 -m http.server 3000 --bind 127.0.0.1
+          command : python3 -m http.server 3000 --bind localhost
           background: true
       - run:
           name: "Install Dependencies"
