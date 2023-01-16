@@ -19,6 +19,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Download Binary"
+          command : python3 -m http.server 3000
+      - run:
           name: "Install Dependencies"
           command: sudo npm install -g browserstack-cypress-cli
       - run:
@@ -28,13 +31,13 @@ jobs:
 workflows:
   build:
     jobs:
-      - build:
-          pre-steps:
-            - run:
-                name: "Download Binary"
-                command : |
-                  python3 -m http.server 3000
-                background: true
+      - build
+          # pre-steps:
+          #   - run:
+          #       name: "Download Binary"
+          #       command : |
+          #         python3 -m http.server 3000
+          #       background: true
             #   command: wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
             # # Unzip the BrowserStack Local binary file
             # - run:
