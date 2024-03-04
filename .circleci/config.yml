@@ -23,7 +23,7 @@ jobs:
           command: sudo npm install -g browserstack-cypress-cli@latest
       - run:
           name: "Run the test on BrowserStack"
-          command: browserstack-cypress --config-file run_conf/bstack-single.json run --async --parallels 5
+          command: browserstack-cypress --config-file run_conf/bstack-single.json run --sync --parallels 5
       # - run:
       #     name: "Download Binary"
       #     command : python3 -m http.server 3000 --bind localhost
