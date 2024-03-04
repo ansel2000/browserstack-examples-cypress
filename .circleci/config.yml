@@ -20,7 +20,7 @@ jobs:
       - checkout
       - run:
           name: "Install Dependencies"
-          command: sudo npm install -g browserstack-cypress-cli
+          command: sudo npm install -g browserstack-cypress-cli@latest
       - run:
           name: "Run the test on BrowserStack"
           command: browserstack-cypress --config-file run_conf/bstack-single.json run --sync --spec --parallels 5
